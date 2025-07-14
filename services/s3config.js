@@ -22,7 +22,7 @@ require("dotenv").config();
 const SafeUtils = require("../utils/SafeUtils");
 const ErrorHandler = require("../utils/ErrorHandler");
 const Logger = require("../utils/UtilityLogger");
-const { DateTime } = require("./DateTime"); // adjust path as needed
+const DateTime = require("./DateTime"); // adjust path as needed
 
 class AwsS3 {
   static client = null;

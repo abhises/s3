@@ -1,6 +1,6 @@
-import { DateTime as LuxonDateTime } from "luxon";
+const { DateTime: LuxonDateTime } = require("luxon");
 
-export default class DateTime {
+class DateTime {
   /**
    * Identify the date format of a given string.
    * @param {string} dateStr
@@ -555,3 +555,5 @@ export default class DateTime {
     return "just now";
   }
 }
+
+module.exports = DateTime;
