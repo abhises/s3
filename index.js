@@ -1,27 +1,27 @@
-import express from "express";
-import dotenv from "dotenv";
-import s3Routes from "./routes/awsS3.js";
-import { fileURLToPath } from "url";
-import path from "path";
+const express = require("express");
+const dotenv = require("dotenv");
+const path = require("path");
+const s3Routes = require("./routes/awsS3");
 
 dotenv.config();
 
 const app = express();
-app.use(express.json());
+
+// Set body parser limits here BEFORE routes
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ extended: true, limit: "50mb" }));
+
+// Register routes AFTER body parsers
 app.use("/s3", s3Routes);
 
-const PORT = process.env.PORT || 4000;
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Serve static files (e.g. HTML, CSS, JS) from the "public" folder
+// Serve static files
 app.use(express.static(path.join(__dirname, "/public")));
 
-// Fallback route for index.html
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/index.html"));
 });
+
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () =>
   console.log(`🚀 Server running on http://localhost:${PORT}`)
 );

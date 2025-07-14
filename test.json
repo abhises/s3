@@ -1,0 +1,17 @@
+[
+  {
+    "source": "Hello",
+    "language": "fr",
+    "translation": "Bonjour"
+  },
+  {
+    "source": "Cancel",
+    "language": "fr",
+    "translation": "Annuler"
+  },
+  {
+    "source": "Submit",
+    "language": "fr",
+    "translation": "Soumettre"
+  }
+]
